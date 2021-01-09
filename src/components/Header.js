@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './Search'
+import Filter from './Filter'
 
 const Header = () => {
     const style = {
@@ -15,6 +16,7 @@ const Header = () => {
     return (
         <div style = {style}>
             <Search/>
+            <Filter/>
         </div>
     )
 }
