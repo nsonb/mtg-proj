@@ -2,6 +2,16 @@ import axios from 'axios';
 
 const URL = 'https://api.magicthegathering.io/v1/'
 
-export default axios.create({
-    baseURL = URL
-})
+// get random 100 cards
+export const getRandomCards = () => {
+    return axios.get(URL + 'cards', {
+        params: {
+            random: true,
+            pageSize: 33
+        }
+    })
+    .then((res) => {
+        console.log(res)
+        return res;
+    })
+}

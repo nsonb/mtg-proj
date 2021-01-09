@@ -1,27 +1,28 @@
 import React from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer';
-
-import ImageSlide from './components/ImageSlide'
+//import Footer from './components/Footer';
+//import Search from './components/Search';
+import CardList from './components/CardList';
+import './App.css'
+//import ImageSlide from './components/ImageSlide'
 const App = () => {
+  
   return (
     <div>
       <Header/>
-      <Footer/>
-      <ImageSlide/>
       <div style = {bodyStyle}>
-        body
+        <CardList/>
       </div>
     </div>
   )
 }
 
 const bodyStyle = {
-  width: '100vw',
-  height: 'calc(100vh - 6em)',
+  height: 'calc(100vh - 5em)',
   position: 'absolute',
   left: '0',
-  top: '3em'
+  top: '5em',
+  overflow: 'hidden'
 }
 
 export default App;

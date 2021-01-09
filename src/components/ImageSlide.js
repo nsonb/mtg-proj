@@ -9,7 +9,8 @@ const ImageSlide = () => {
         left: 0,
         width: '100vw',
         height: '100vh',
-        zIndex: '-5'
+        zIndex: '-5',
+        overflow: 'hidden'
     }
 
     const backgroundStyle = {

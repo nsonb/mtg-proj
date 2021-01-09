@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from './Search'
 
 const Header = () => {
     const style = {
@@ -6,14 +7,14 @@ const Header = () => {
         top: '0',
         left: '0',
         width: '100vw',
-        height: '3em',
+        height: '4em',
         zIndex: '5',
         background: 'black',
         color: 'white'
     }
     return (
         <div style = {style}>
-            header
+            <Search/>
         </div>
     )
 }
