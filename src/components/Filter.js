@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
+import DropDownMenu from './DropDownMenu'
 
 const Filter = () => {
     const def = "All";
-    const types = ["Artifact","Autobot","Card","Character","Conspiracy","Creature","Dragon","Elemental","Enchantment","Goblin","Hero","instant","Instant","Jaguar","Knights","Land","Phenomenon","Plane","Planeswalker","Scheme","Sorcery","Specter","Summon","Tribal","Vanguard","Wolf"];
+    const types = ["All","Artifact","Autobot","Card","Character","Conspiracy","Creature","Dragon","Elemental","Enchantment","Goblin","Hero","instant","Instant","Jaguar","Knights","Land","Phenomenon","Plane","Planeswalker","Scheme","Sorcery","Specter","Summon","Tribal","Vanguard","Wolf"];
     const subtypes = [
         "Abian","Adventure","Advisor","Aetherborn","Ajani","Alara","Alicorn",
         "Alien","Ally","Aminatou","and/or","Angel","Angrath","Antelope","Ape",
@@ -37,22 +38,25 @@ const Filter = () => {
         "Soltari","Sorin","Spawn","Specter","Spellshaper","Sphinx","Spider","Spike","Spirit","Sponge","Spy","Squid","Squirrel","Starfish","Surrakar","Swamp",
         "Szat","Tamiyo","Teferi","Teyo","Tezzeret","Thalakos","The","Thopter","Thrull","Tibalt","Tower","Townsfolk","Trap","Treefolk","Trilobite","Troll","Turtle",
         "Ugin","Ulgrotha","Unicorn","Urza","Urza’s","Valla","Vampire","Vampyre","Vedalken","Vehicle","Venser","Viashino","Villain","Vivien",
-        "Volver","Vraska","Vryn","Waiter","Wall","Warlock","Warrior","Weird","Werewolf","Whale","Wildfire","Will","Windgrace","Wizard","Wolf","Wolverine","Wombat","Worm","Wraith","Wrenn","Wrestler","Wurm","Xenagos","Xerex","Yanggu","Yanling","Yeti","Zendikar","Zombie","Zubera"]
-    const supertypes = ["Basic","Host","Legendary","Ongoing","Snow","World"]
-    const format = ["Brawl","Commander","Duel","Future","Historic","Legacy","Modern","Oldschool","Pauper","Penny","Pioneer","Standard","Vintage"]
+        "Volver","All","Vraska","Vryn","Waiter","Wall","Warlock","Warrior","Weird","Werewolf","Whale","Wildfire","Will","Windgrace","Wizard","Wolf","Wolverine","Wombat","Worm","Wraith","Wrenn","Wrestler","Wurm","Xenagos","Xerex","Yanggu","Yanling","Yeti","Zendikar","Zombie","Zubera"]
+    const supertypes = ["All","Basic","Host","Legendary","Ongoing","Snow","World"]
+    const format = ["All","Brawl","Commander","Duel","Future","Historic","Legacy","Modern","Oldschool","Pauper","Penny","Pioneer","Standard","Vintage"]
     
     const [currentType, setCurrentType] = useState(def);
     const [currentSubType, setCurrentSubType] = useState(def)
     const [currentSuperType, setCurrentSuperType] = useState(def)
     const [currentFormat, setCurrentFormat] = useState(def)
     return (
-        <div>
-            <button>{currentType}</button>
-            <button>{currentSubType}</button>
-            <button>{currentSuperType}</button>
-            <button>{currentFormat}</button>
+        <div style={style}>
+            <DropDownMenu value={currentType} list = {types} change = {setCurrentType}/>
+            <DropDownMenu value={currentSubType} list = {subtypes} change = {setCurrentSubType}/>
+            <DropDownMenu value={currentSuperType} list = {supertypes} change = {setCurrentSuperType}/>
+            <DropDownMenu value={currentFormat} list = {format} change = {setCurrentFormat}/>
         </div>
     )
 }
 
+const style = {
+    display: 'flex'
+}
 export default Filter
