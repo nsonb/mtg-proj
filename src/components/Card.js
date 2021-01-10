@@ -9,7 +9,7 @@ const Card = ({card}) => {
         width: '250px'
     }
     return (
-        <div key={card.id} style={style} className='hover'> 
+        <div key={card.id} style={style} className='hover' onClick={() => {console.log(card)}}> 
             <p>{card.name}</p>
             <img src = {card.imageUrl} alt={`'art for card ${card.name}`} style = {imageStyle}/>
         </div>

@@ -1,10 +1,10 @@
 import React, { createContext,  useState } from 'react';
-import { getCardsWithParam, getRandomCards } from '../axios/api';
+import { getCardsWithParam, getRandomCards, getPageLastParam } from '../axios/api';
 
 export const CardsContext = createContext();
 export const CardsContextProvider = (props) => {
     const [ cards, setCards ] = useState(null);
-
+    const [ maxPage, setMaxPage ] = useState(1);
 
     const initCards = () => {
         getRandomCards().then((data) => {
@@ -18,8 +18,14 @@ export const CardsContextProvider = (props) => {
         });
     }
 
+    const getPage = (page) => {
+        getPageLastParam(page).then((data) => {
+            setCards(data.data.cards);
+        });
+    }
+
     return (
-        <CardsContext.Provider value={{cards, initCards, setCardsWithParam}}>
+        <CardsContext.Provider value={{cards, initCards, setCardsWithParam, getPage}}>
             {props.children}
         </CardsContext.Provider>
     );
