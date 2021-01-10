@@ -14,7 +14,7 @@ const DropDownMenu = ({value, list, change}) => {
     })
     return (
         <div style={style} onMouseEnter = {() => {setDisplay(!display)}} onMouseLeave = {() => {setDisplay(!display)}} >
-           <button className='hover'>{value}</button>
+           <button className='hover' style={displayButton}>{value}</button>
            {display !== true ? null : <div style={dropdown}>{renderedList}</div>}
            
         </div>
@@ -25,12 +25,19 @@ export default DropDownMenu;
 
 const style = {
     zIndex: '5',
+    width: '100%',
     padding: '8px',
+    paddingLeft: 0,
     position: 'relative'
+}
+
+const displayButton = {
+    width: '100%'
 }
 
 const dropdown = {
     position: 'absolute',
     top: '2em',
-    left: '0.5em'
+    left: '0em',
+    width: '500%'
 }

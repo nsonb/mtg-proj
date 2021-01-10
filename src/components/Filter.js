@@ -48,10 +48,25 @@ const Filter = () => {
     const [currentFormat, setCurrentFormat] = useState(def)
     return (
         <div style={style}>
-            <DropDownMenu value={currentType} list = {types} change = {setCurrentType}/>
-            <DropDownMenu value={currentSubType} list = {subtypes} change = {setCurrentSubType}/>
-            <DropDownMenu value={currentSuperType} list = {supertypes} change = {setCurrentSuperType}/>
-            <DropDownMenu value={currentFormat} list = {format} change = {setCurrentFormat}/>
+            <div style={box}>
+                <p>Type</p>
+                <DropDownMenu value={currentType} list = {types} change = {setCurrentType}/>
+            </div>
+            <div style={box}>
+                <p>Subtype</p>
+                <DropDownMenu value={currentSubType} list = {subtypes} change = {setCurrentSubType}/>
+            </div>
+            
+            <div style={box}>
+                <p>Supertype</p>
+                <DropDownMenu value={currentSuperType} list = {supertypes} change = {setCurrentSuperType}/>
+            </div>
+            
+            <div style={box}>
+                <p>Format</p>
+                <DropDownMenu value={currentFormat} list = {format} change = {setCurrentFormat}/>
+            </div>
+            
         </div>
     )
 }
@@ -59,4 +74,9 @@ const Filter = () => {
 const style = {
     display: 'flex'
 }
+
+const box = {
+    width: '5em'
+}
+
 export default Filter
