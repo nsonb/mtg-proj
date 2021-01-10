@@ -14,7 +14,12 @@ export const getRandomCards = async ( number = 34) => {
     return res;
 }
 
-export const getCardsWithParam = async () => {
-    return
+export const getCardsWithParam = async (params) => {
+    console.log(params);
+    const res = await axios.get(URL + 'cards', {
+        params: params
+    });
+    console.log(res);
+    return res;
 }
 

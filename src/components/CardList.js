@@ -1,15 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useContext } from 'react';
 import Card from './Card';
-import { getRandomCards } from '../axios/api';
+import { CardsContext } from '../context/CardContext'
 
 const CardList = () => {
-    const [cards, setCards] = useState(null);
+    const { initCards, cards } = useContext(CardsContext);
     let renderedList;
     
     useEffect(() => {
-        getRandomCards().then((data) => {
-            setCards(data.data.cards);
-        });
+        initCards();
     }, [])
 
     renderedList = cards === null ? null : cards.map(card => {

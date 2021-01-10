@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
-import DropDownMenu from './DropDownMenu'
+import React, {useState, useEffect, useContext} from 'react';
+import DropDownMenu from './DropDownMenu';
+import { CardsContext } from '../context/CardContext';
 
 const Filter = () => {
     const def = "All";
+    const { setCardsWithParam } = useContext(CardsContext)
+    // list of types
     const types = ["All","Artifact","Autobot","Card","Character","Conspiracy","Creature","Dragon","Elemental","Enchantment","Goblin","Hero","instant","Instant","Jaguar","Knights","Land","Phenomenon","Plane","Planeswalker","Scheme","Sorcery","Specter","Summon","Tribal","Vanguard","Wolf"];
     const subtypes = [
         "Abian","Adventure","Advisor","Aetherborn","Ajani","Alara","Alicorn",
@@ -41,11 +44,20 @@ const Filter = () => {
         "Volver","All","Vraska","Vryn","Waiter","Wall","Warlock","Warrior","Weird","Werewolf","Whale","Wildfire","Will","Windgrace","Wizard","Wolf","Wolverine","Wombat","Worm","Wraith","Wrenn","Wrestler","Wurm","Xenagos","Xerex","Yanggu","Yanling","Yeti","Zendikar","Zombie","Zubera"]
     const supertypes = ["All","Basic","Host","Legendary","Ongoing","Snow","World"]
     const format = ["All","Brawl","Commander","Duel","Future","Historic","Legacy","Modern","Oldschool","Pauper","Penny","Pioneer","Standard","Vintage"]
-    
+    //state variable
     const [currentType, setCurrentType] = useState(def);
     const [currentSubType, setCurrentSubType] = useState(def)
     const [currentSuperType, setCurrentSuperType] = useState(def)
     const [currentFormat, setCurrentFormat] = useState(def)
+
+    useEffect(() => {
+        setCardsWithParam({
+            type: currentType === def? null : currentType,
+            format: currentFormat === def? null : currentFormat,
+            subtype: currentSubType === def? null : currentSubType,
+            supertype: currentSuperType === def? null : currentSuperType
+        })
+    }, [currentFormat, currentType, currentSubType, currentSuperType])
     return (
         <div style={style}>
             <div style={box}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { CardsContextProvider } from './context/CardContext';
 import Header from './components/Header';
 //import Footer from './components/Footer';
 //import Search from './components/Search';
@@ -8,11 +9,13 @@ import './App.css'
 const App = () => {
   
   return (
-    <div>
-      <Header/>
-      <div style = {bodyStyle}>
-        <CardList/>
-      </div>
+    <div className='app'>
+      <CardsContextProvider>
+        <Header/>
+        <div style = {bodyStyle}>
+          <CardList/>
+        </div>
+      </CardsContextProvider>
     </div>
   )
 }
