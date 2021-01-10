@@ -53,9 +53,9 @@ const Filter = () => {
     useEffect(() => {
         setCardsWithParam({
             type: currentType === def? null : currentType,
-            format: currentFormat === def? null : currentFormat,
-            subtype: currentSubType === def? null : currentSubType,
-            supertype: currentSuperType === def? null : currentSuperType
+            gameFormat: currentFormat === def? null : currentFormat,
+            subtypes: currentSubType === def? null : currentSubType,
+            supertypes: currentSuperType === def? null : currentSuperType
         })
     }, [currentFormat, currentType, currentSubType, currentSuperType])
     return (
