@@ -3,8 +3,8 @@ import Card from './Card';
 import { CardsContext } from '../context/CardContext'
 
 const CardList = () => {
-    const { initCards, cards, getPage } = useContext(CardsContext);
-    const [ page, setPage] = useState(1);
+    const { initCards, cards, getPage, totalCard } = useContext(CardsContext);
+    let renderedCard = 0;
     let renderedList;
     useEffect(() => {
         initCards();
@@ -12,13 +12,13 @@ const CardList = () => {
 
     renderedList = cards === null ? null : cards.map(card => {
         if(card.multiverseid !== undefined) {
+            renderedCard++;
             return <Card card = {card} key={card.id}/>
         } else {
             return null
         }
         
     })
-    
     const style = {
         display: 'flex',
         flexWrap: 'wrap',
@@ -32,20 +32,15 @@ const CardList = () => {
 
     return (
         <div style={style}>
+            <p>{renderedCard} of {totalCard} results.</p>
             <button 
                 className='hover' 
                 onClick={() => {
-                    console.log(page)
-                    setPage(page+1)
-                    getPage(page)
                 }}
             > next page </button>
             <button 
                 className='hover' 
                 onClick={() => {
-                    console.log(page)
-                    setPage(page-1)
-                    getPage(page)
                 }}
             > previous page </button>
             {renderedList}
