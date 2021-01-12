@@ -8,8 +8,9 @@ export const CardsContextProvider = (props) => {
     const [ maxPage, setMaxPage ] = useState(1);
 
     const initCards = () => {
-        getRandomCards().then((data) => {
-            setCards(data.data.cards);
+        getRandomCards().then((res) => {
+            setTotalCard(res.headers["total-count"]);
+            setCards(res.data.cards);
         });
     }
 

@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-const URL = 'https://api.magicthegathering.io/v1/';
+const cardURL = 'https://api.magicthegathering.io/v1/cards?contains=imageUrl';
 let lastParam = {}
 
 // get random cards
 export const getRandomCards = async ( number = 34) => {
     lastParam = {
-        random: true,
+        random: false,
         pageSize: number,
     }
-    const res = await axios.get(URL + 'cards', {
+    const res = await axios.get(cardURL, {
         params: lastParam
     });
     console.log(res);
@@ -20,8 +20,9 @@ export const getRandomCards = async ( number = 34) => {
 export const getCardsWithParam = async (params, number= 30, page = 1) => {
     params.pageSize = number;
     params.page = page;
+    params.contains = 'imageUrl';
     lastParam = params;
-    const res = await axios.get(URL + 'cards', {
+    const res = await axios.get(cardURL, {
         params: params
     });
     return res;
@@ -30,7 +31,7 @@ export const getCardsWithParam = async (params, number= 30, page = 1) => {
 export const getPageLastParam = async (page = 1) => {
     lastParam.page = page;
     console.log(lastParam);
-    const res = await axios.get(URL + 'cards', {
+    const res = await axios.get(cardURL, {
         params: lastParam
     });
     console.log(res);
